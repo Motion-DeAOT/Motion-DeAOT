@@ -1,0 +1,9 @@
+torch>=1.7.0
+torchvision
+opencv-python
+Pillow
+numpy
+scipy
+filterpy
+tqdm
+matplotlib
