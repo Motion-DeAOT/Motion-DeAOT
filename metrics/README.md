@@ -13,13 +13,21 @@ Motion-DeAOT introduces three evaluation metrics for assessing identity preserva
 
 ### F1 Score
 
-The segmentation F1 score is computed as:
+The F1 score measures segmentation quality by combining precision and recall.
 
-[
-F_1=\frac{2PR}{P+R}
-]
+**Definition:**
 
-where (P) and (R) denote precision and recall, respectively.
+```text
+F1 = (2 × Precision × Recall) / (Precision + Recall)
+```
+
+where:
+
+* **Precision** = Overlap / Predicted Pixels
+* **Recall** = Overlap / Ground-Truth Pixels
+
+Higher F1 scores indicate better agreement between the predicted and ground-truth masks.
+
 
 ---
 
