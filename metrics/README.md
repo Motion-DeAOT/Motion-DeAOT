@@ -25,20 +25,19 @@ where (P) and (R) denote precision and recall, respectively.
 
 ### Identity Preservation Score (IPS)
 
-IPS combines segmentation quality and identity consistency:
+IPS combines segmentation quality and identity consistency.
 
-[
-IPS =
-\begin{cases}
-0, & N_c = 0 \
-\frac{F_1}{N_c}, & \text{otherwise}
-\end{cases}
-]
+**Definition:**
+
+```text
+IPS = 0                  if Nc = 0
+IPS = F1 / Nc           otherwise
+```
 
 where:
 
-* (F_1) is the segmentation F1 score.
-* (N_c) is the number of connected components in the predicted mask.
+* **F1** is the segmentation F1 score.
+* **Nc** is the number of connected components in the predicted mask.
 
 A prediction consisting of multiple disconnected regions receives a lower IPS, reflecting reduced identity consistency.
 
@@ -48,19 +47,17 @@ A prediction consisting of multiple disconnected regions receives a lower IPS, r
 
 A failure event is triggered whenever:
 
-[
+```text
 IPS < 0.5
-]
+```
 
-A recovery event is declared when IPS remains above the threshold for two consecutive frames.
+A recovery event is declared when IPS remains above the threshold for **two consecutive frames**.
 
-Recovery Rate is defined as:
+**Definition:**
 
-[
-RR = \frac{\text{Recovered Failure Events}}
-{\text{Total Failure Events}}
-\times 100
-]
+```text
+RR = (Recovered Failure Events / Total Failure Events) × 100
+```
 
 Higher RR indicates stronger recovery capability following identity failures.
 
@@ -70,16 +67,16 @@ Higher RR indicates stronger recovery capability following identity failures.
 
 For every recovered failure event, recovery delay is measured as the number of frames between failure detection and recovery.
 
-ARD is computed as:
+**Definition:**
 
-[
-ARD =
-\frac{1}{N}
-\sum_{i=1}^{N}
-d_i
-]
+```text
+ARD = (1 / N) × Σ di
+```
 
-where (d_i) denotes the recovery delay of the (i^{th}) recovered event.
+where:
+
+* **N** is the number of recovered failure events.
+* **di** denotes the recovery delay of the *i-th* recovered event.
 
 Lower ARD indicates faster recovery from tracking failures.
 
