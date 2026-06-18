@@ -76,6 +76,28 @@ eagle_attack_drone
 multi_fighterjets
 ```
 
+### Metric Evaluation
+
+Compute IPS and F1:
+
+python metrics/compute_ips.py \
+    --gt_root Custom_distractor_dataset/Annotations \
+    --pred_root pred_masks \
+    --output_dir results
+
+Compute RR and ARD:
+
+python metrics/compute_recovery_metrics.py \
+    --csv results/IPS_FRAMEWISE.csv \
+    --output_csv results/RR_ARD_VIDEOWISE.csv
+
+Generated files:
+
+results/
+├── IPS_FRAMEWISE.csv
+├── IPS_VIDEOWISE.csv
+└── RR_ARD_VIDEOWISE.csv
+
 ### Semi-Supervised VOS Setting
 
 Motion-DeAOT follows the semi-supervised VOS protocol:
